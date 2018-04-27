@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %} publisher_list {% endblock %}
+{% block publisher %}active{% endblock %}
+{% block content %}
+    {#页头#}
+    <div class="page-header">
+        <h1>图书管理系统
+            <small>出版社列表</small>
+        </h1>
+        {#面板#}
+        <div class="panel panel-primary">
+            <div class="panel-heading">出版社列表</div>
+            <div class="panel-body">
+                {# 搜索#}
+                <div class="row search_row " style="padding-bottom: 10px;">
+                    <div class="col-md-4">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label class="sr-only" for="exampleInputAmount"></label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="exampleInputAmount" placeholder="搜索">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-default">搜索</button>
+                        </form>
+
+                    </div>
+                    <div class="col-md-2  pull-right">
+                        <a href="/add_publisher/">
+                            <button type="button" class="btn btn-primary mybutton">
+                                新增出版社
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>publisher id</th>
+                        <th>publisher name</th>
+{#                        <th>books</th>#}
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for publisher in publishers %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ publisher.id }}</td>
+                            <td>{{ publisher.name }}</td>
+{#                            <td>{{ book_list.name}}</td>#}
+                            <td>
+                                <a href="/remove_publisher?id={{ publisher.id }}">
+                                    <button class="btn btn-default"> 删除</button>
+                                </a>
+                                <a href="/edite_publisher?id={{ publisher.id }}">
+                                    <button class="btn btn-default">编辑</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                {# 分页#}
+                <nav aria-label="Page navigation " class="pull-right">
+                    <ul class="pagination">
+                        <li>
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

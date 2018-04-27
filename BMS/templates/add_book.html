@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %} add_book {% endblock %}
+{% block book %}active{% endblock %}
+{% block content %}
+
+    <div class="myform">
+        <form class="form-horizontal" action="/add_book/" method="POST">
+            <div class="row">
+
+                <div class="form-group">
+                    <label for="student_name" class="col-sm-2 control-label">书名：</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="book_name" id="student_name" class="form-control ">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="class_name" class="col-sm-2 control-label">作者:</label>
+                    <div class="col-sm-9">
+                        <select multiple name="writer_name" class="form-control">
+                            {% for writer in writers_list %}
+
+                                <option  value="{{ writer.id }}">{{ writer.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="class_name" class="col-sm-2 control-label">出版社:</label>
+                    <div class="col-sm-9">
+                        <select  name="publisher_id" class="form-control">
+                            {% for publisher in publisher_list %}
+                                <option value="{{ publisher.id }}">{{ publisher.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="student_name" class="col-sm-2 control-label">出版日期：</label>
+                <div class="col-sm-9">
+                    <input type="text" name="pub_date" id="student_name" class="form-control ">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="student_name" class="col-sm-2 control-label">主要内容：</label>
+                <div class="col-sm-9">
+                    <input type="text" name="main_content" id="student_name" class="form-control ">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-5 col-sm-7">
+                    <input type="submit" class="btn btn-primary" value="提交">
+
+                </div>
+        </form>
+    </div>
+{% endblock %}
