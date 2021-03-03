@@ -7,21 +7,25 @@
     <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
 </head>
 <style>
-.mynav{padding-bottom:20px;}
+    .mynav {
+        padding-bottom: 20px;
+    }
 </style>
 <body>
 
 <div class="mynav">
-<ul class="nav nav-tabs">
-  <li role="presentation" class={% block index %}{% endblock %}><a href='{% url "apone:index" %}'>主页</a></li>
-  <li role="presentation" class={% block book %}{% endblock %}><a href='{% url "apone:books"%}'>图书管理</a></li>
-  <li role="presentation" class={% block publisher %}{% endblock %}><a href='{% url "apone:publishers" %}'>出版社管理</a></li>
-  <li role="presentation" class={% block writter %}{% endblock %}><a href='{% url "apone:writers" %}'>作者管理</a></li>
-</ul>
+    <ul class="nav nav-tabs">
+        <li role="presentation" class={% block index %}{% endblock %}><a href='{% url "apone:index" %}'>主页</a></li>
+        <li role="presentation" class={% block book %}{% endblock %}><a href='{% url "apone:books" %}'>图书管理</a></li>
+        <li role="presentation" class={% block publisher %}{% endblock %}><a
+                href='{% url "apone:publishers" %}'>出版社管理</a></li>
+        <li role="presentation" class={% block writter %}{% endblock %}><a href='{% url "apone:writers" %}'>作者管理</a>
+        </li>
+    </ul>
 </div>
 
 <div class="container">
-{% block content %} {% endblock content %}
+    {% block content %} {% endblock content %}
 </div>
 
 </body>

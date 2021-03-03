@@ -40,7 +40,7 @@
                         <th>#</th>
                         <th>writer id</th>
                         <th>writer name</th>
-{#                        <th>books</th>#}
+                        {#                        <th>books</th>#}
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -50,7 +50,7 @@
                             <th scope="row">{{ forloop.counter }}</th>
                             <td>{{ writer.id }}</td>
                             <td>{{ writer.name }}</td>
-{#                            <td>{{ book_list.name}}</td>#}
+                            {#                            <td>{{ book_list.name}}</td>#}
                             <td>
                                 <a href="/remove_writer?id={{ writer.id }}">
                                     <button class="btn btn-default"> 删除</button>

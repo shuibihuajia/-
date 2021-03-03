@@ -49,7 +49,6 @@ def edite_writer(request):
 
 # books
 def books(request):
-
     obj = models.Books.objects.all()
     return render(request, "books.html", {"books": obj})
 
@@ -69,13 +68,13 @@ def add_book(request):
 
     new_writers = models.Books.objects.create(name=name, pub_date=new_pub_date, main_content=main_content,
                                               pub_company_id=publisher)
-    #一本书对应多个作者
+    # 一本书对应多个作者
     new_writers.writer.set(writer)
     new_writers.save()
     return redirect("/books/")
 
 
-def remove_book(request,arg):
+def remove_book(request, arg):
     # print(arg)
     # remove_id = request.GET.get("id")
     remove_obj = models.Books.objects.get(id=arg)
@@ -84,10 +83,9 @@ def remove_book(request,arg):
 
 
 def edite_book(request, arg):
-
     if request.method != "POST":
-        #之前是通过url连接传递id值，所以需要get（）一下
-        #edite_id = request.GET.get("id")
+        # 之前是通过url连接传递id值，所以需要get（）一下
+        # edite_id = request.GET.get("id")
         edite_obj = models.Books.objects.get(id=arg)
         writers_obj = models.Writers.objects.all()
         publisher_list = models.Publishers.objects.all()
@@ -99,17 +97,17 @@ def edite_book(request, arg):
     publisher = request.POST.get("publisher_id")
     new_pub_date = request.POST.get("pub_date")
     main_content = request.POST.get("main_content")
-    #获取要修改的对象
+    # 获取要修改的对象
     new_edite_obj = models.Books.objects.get(id=book_id)
     new_edite_obj.name = book_name
-    #修改多对多字段时要用<多对多字段> .set(<新值>)
+    # 修改多对多字段时要用<多对多字段> .set(<新值>)
     new_edite_obj.writer.set(writer)
     new_edite_obj.pub_company.name = publisher
     new_edite_obj.pub_date = new_pub_date
     new_edite_obj.main_content = main_content
     new_edite_obj.save()
-    #这两种方式都可以取到
-    #return redirect("apone:books")
+    # 这两种方式都可以取到
+    # return redirect("apone:books")
     url = reverse("apone:books")
     return redirect(url)
 
